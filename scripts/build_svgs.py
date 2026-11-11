@@ -148,7 +148,7 @@ def soft_cloud(x, y, s, t, drift=14, dur="16s"):
 
 # ---------------------------------------------------------------- HEADER (동화풍, 가운데 타이틀 + 양쪽 작은 행성)
 TITLE = "Byunggwan Kim"
-TAGLINE = "Full-stack Developer  ·  Java & TypeScript"
+TAGLINE = "Full-stack Developer  ·  Spring Boot & Next.js"
 MOTTO = "building little things on a little planet"
 SCENE = {  # 장면 전용 색 (day = 해 질 녘 수채화, night = 깊은 밤)
     "day": dict(sky=["#F7E9D7", "#F3D5CF", "#D8D0F0"], planet="#E9C9A6", crater="#D2A57E",
@@ -266,11 +266,11 @@ def header(t):
     p.append(f'<rect width="{W}" height="{H}" filter="url(#paper)"/>')
     # 가운데 타이틀
     cx = W / 2
-    p.append(f'<text class="r" x="{cx}" y="150" font-size="50" font-style="italic" font-weight="700" letter-spacing=".5" '
+    p.append(f'<text class="r" x="{cx}" y="140" font-size="36" font-style="italic" font-weight="700" letter-spacing=".5" '
              f'fill="{k["ink"]}" text-anchor="middle">{TITLE}</text>')
-    p.append(sparkle(cx - 212, 184, 5, k["accent"]) + sparkle(cx + 212, 184, 5, k["accent"]))
-    p.append(f'<text class="r" x="{cx}" y="190" font-size="16" letter-spacing="1.5" fill="{k["muted"]}" text-anchor="middle">{escape(TAGLINE)}</text>')
-    p.append(f'<text class="m" x="{cx}" y="222" font-size="11.5" letter-spacing="3" fill="{k["muted"]}" text-anchor="middle" opacity=".85">— {MOTTO.upper()} —</text>')
+    p.append(sparkle(cx - 186, 170, 4, k["accent"]) + sparkle(cx + 186, 170, 4, k["accent"]))
+    p.append(f'<text class="r" x="{cx}" y="175" font-size="13.5" letter-spacing="1.2" fill="{k["muted"]}" text-anchor="middle">{escape(TAGLINE)}</text>')
+    p.append(f'<text class="m" x="{cx}" y="202" font-size="10" letter-spacing="2.6" fill="{k["muted"]}" text-anchor="middle" opacity=".85">— {MOTTO.upper()} —</text>')
     p.append("</g>")
     return svg(W, H, "\n".join(p))
 
