@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="440" height="170" viewBox="0 0 440 170" fill="none">
+<style>.s{font-family:'Pretendard','Inter','Segoe UI','Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif}.m{font-family:'JetBrains Mono','SF Mono','Cascadia Code',Consolas,Menlo,monospace}.r{font-family:'Gowun Batang','Nanum Myeongjo','AppleMyungjo','Batang',Georgia,serif}</style>
+<rect x="1.5" y="1.5" width="437" height="167" rx="22" fill="#11132A" stroke="#2A2D52" stroke-width="2"/>
+<line x1="318" y1="120" x2="346" y2="82" stroke="#FFD66B" stroke-width="1.3" stroke-dasharray="3 4" opacity=".7"/>
+<line x1="346" y1="82" x2="384" y2="98" stroke="#FFD66B" stroke-width="1.3" stroke-dasharray="3 4" opacity=".7"/>
+<line x1="384" y1="98" x2="404" y2="54" stroke="#FFD66B" stroke-width="1.3" stroke-dasharray="3 4" opacity=".7"/>
+<line x1="404" y1="54" x2="366" y2="38" stroke="#FFD66B" stroke-width="1.3" stroke-dasharray="3 4" opacity=".7"/>
+<path d="M318,112.52 Q320.0944,117.90559999999999 325.48,120 Q320.0944,122.09440000000001 318,127.48 Q315.9056,122.09440000000001 310.52,120 Q315.9056,117.90559999999999 318,112.52Z" fill="#FFD66B"><animate attributeName="opacity" values="1;.3;1" dur="2.5s" begin="0.0s" repeatCount="indefinite"/></path>
+<path d="M346,76.56 Q347.5232,80.4768 351.44,82 Q347.5232,83.5232 346,87.44 Q344.4768,83.5232 340.56,82 Q344.4768,80.4768 346,76.56Z" fill="#FFD66B"><animate attributeName="opacity" values="1;.3;1" dur="2.9s" begin="0.3s" repeatCount="indefinite"/></path>
+<path d="M384,90.52 Q386.0944,95.90559999999999 391.48,98 Q386.0944,100.09440000000001 384,105.48 Q381.9056,100.09440000000001 376.52,98 Q381.9056,95.90559999999999 384,90.52Z" fill="#FFD66B"><animate attributeName="opacity" values="1;.3;1" dur="3.3s" begin="0.6s" repeatCount="indefinite"/></path>
+<path d="M404,48.56 Q405.5232,52.4768 409.44,54 Q405.5232,55.5232 404,59.44 Q402.4768,55.5232 398.56,54 Q402.4768,52.4768 404,48.56Z" fill="#FFD66B"><animate attributeName="opacity" values="1;.3;1" dur="3.7s" begin="0.8999999999999999s" repeatCount="indefinite"/></path>
+<path d="M366,30.52 Q368.0944,35.9056 373.48,38 Q368.0944,40.0944 366,45.480000000000004 Q363.9056,40.0944 358.52,38 Q363.9056,35.9056 366,30.52Z" fill="#FFD66B"><animate attributeName="opacity" values="1;.3;1" dur="4.1s" begin="1.2s" repeatCount="indefinite"/></path>
+<text class="m" x="28" y="42" font-size="13" letter-spacing="2" fill="#A7A3C7">PROJECT</text>
+<text class="s" x="26" y="88" font-size="32" font-weight="800" letter-spacing="-.5" fill="#F5F3FF">shg-trip</text>
+<text class="s" x="28" y="116" font-size="16" fill="#A7A3C7">여행 일정 관리 서비스</text>
+<rect x="28" y="130" width="209" height="24" rx="12" fill="#FFD66B" fill-opacity=".16"/>
+<text class="s" x="40" y="146.5" font-size="13" font-weight="600" fill="#FFD66B">Spring Boot · Next.js · AWS</text>
+</svg>
