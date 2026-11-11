@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="170" viewBox="0 0 900 170" fill="none">
+<style>.s{font-family:'Pretendard','Inter','Segoe UI','Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif}.m{font-family:'JetBrains Mono','SF Mono','Cascadia Code',Consolas,Menlo,monospace}.r{font-family:'Gowun Batang','Nanum Myeongjo','AppleMyungjo','Batang',Georgia,serif}</style>
+<circle cx="60" cy="30" r="2" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="2.2s" begin="0.0s" repeatCount="indefinite"/></circle>
+<circle cx="150" cy="70" r="1.3" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="2.8000000000000003s" begin="0.4s" repeatCount="indefinite"/></circle>
+<circle cx="260" cy="24" r="1.3" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="3.4000000000000004s" begin="0.8s" repeatCount="indefinite"/></circle>
+<circle cx="370" cy="58" r="2" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="4.0s" begin="1.2000000000000002s" repeatCount="indefinite"/></circle>
+<circle cx="500" cy="20" r="1.3" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="4.6s" begin="1.6s" repeatCount="indefinite"/></circle>
+<circle cx="590" cy="64" r="1.3" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="2.2s" begin="2.0s" repeatCount="indefinite"/></circle>
+<circle cx="700" cy="30" r="2" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="2.8000000000000003s" begin="2.4000000000000004s" repeatCount="indefinite"/></circle>
+<circle cx="820" cy="56" r="1.3" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="3.4000000000000004s" begin="0.0s" repeatCount="indefinite"/></circle>
+<circle cx="870" cy="18" r="1.3" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="4.0s" begin="0.4s" repeatCount="indefinite"/></circle>
+<circle cx="420" cy="90" r="2" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="4.6s" begin="0.8s" repeatCount="indefinite"/></circle>
+<circle cx="120" cy="100" r="1.3" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="2.2s" begin="1.2000000000000002s" repeatCount="indefinite"/></circle>
+<circle cx="760" cy="96" r="1.3" fill="#FFF6D6"><animate attributeName="opacity" values="1;.2;1" dur="2.8000000000000003s" begin="1.6s" repeatCount="indefinite"/></circle>
+<path d="M310,35 Q311.4,38.6 315,40 Q311.4,41.4 310,45 Q308.6,41.4 305,40 Q308.6,38.6 310,35Z" fill="#FFF6D6"><animate attributeName="opacity" values="1;.3;1" dur="3s" begin="0s" repeatCount="indefinite"/></path><path d="M640,42 Q641.12,44.88 644,46 Q641.12,47.12 640,50 Q638.88,47.12 636,46 Q638.88,44.88 640,42Z" fill="#FFF6D6"><animate attributeName="opacity" values="1;.3;1" dur="2.6s" begin="1s" repeatCount="indefinite"/></path>
+<defs><linearGradient id="ssf" x1="0" x2="1"><stop offset="0" stop-color="#FFF6D6" stop-opacity="0"/><stop offset="1" stop-color="#FFF6D6"/></linearGradient></defs>
+<g opacity="0"><animate attributeName="opacity" values="0;1;0;0" keyTimes="0;.08;.18;1" dur="7s" begin="3s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="0 0;150 68;150 68" keyTimes="0;.18;1" dur="7s" begin="3s" repeatCount="indefinite"/>
+<line x1="470" y1="-20" x2="560" y2="20" stroke="url(#ssf)" stroke-width="2.5" stroke-linecap="round"/>
+<circle cx="560" cy="20" r="2.6" fill="#FFF6D6"/></g>
+<defs><linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#C9A37E"/><stop offset="1" stop-color="#9A7552"/></linearGradient></defs>
+<path d="M0,138 Q450,108 900,138 L900,170 L0,170Z" fill="url(#gr)"/>
+<ellipse cx="120" cy="136.1" rx="14" ry="4.9" fill="#9A7552" opacity=".8"/>
+<ellipse cx="330" cy="122.1" rx="10" ry="3.5" fill="#9A7552" opacity=".8"/>
+<ellipse cx="600" cy="123.3" rx="16" ry="5.6" fill="#9A7552" opacity=".8"/>
+<ellipse cx="790" cy="137.1" rx="11" ry="3.8" fill="#9A7552" opacity=".8"/>
+<path d="M65,131.4 q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="#5E8C6A" stroke-width="2" stroke-linecap="round" fill="none"/>
+<path d="M185,120.0 q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="#5E8C6A" stroke-width="2" stroke-linecap="round" fill="none"/>
+<path d="M255,115.3 q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="#5E8C6A" stroke-width="2" stroke-linecap="round" fill="none"/>
+<path d="M405,110.2 q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="#5E8C6A" stroke-width="2" stroke-linecap="round" fill="none"/>
+<path d="M515,110.7 q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="#5E8C6A" stroke-width="2" stroke-linecap="round" fill="none"/>
+<path d="M645,115.9 q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="#5E8C6A" stroke-width="2" stroke-linecap="round" fill="none"/>
+<path d="M715,120.8 q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="#5E8C6A" stroke-width="2" stroke-linecap="round" fill="none"/>
+<path d="M855,134.9 q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="#5E8C6A" stroke-width="2" stroke-linecap="round" fill="none"/>
+<g transform="translate(560,111.8) scale(.8)"><path d="M0,0 L0,-20" stroke="#6FAF7D" stroke-width="2.2" stroke-linecap="round"/><path d="M0,-9 q-8,-2 -9,-8 q7,0 9,6Z" fill="#6FAF7D"/><path d="M-6,-24 q6,-10 12,0 q-1,7 -6,7 q-5,0 -6,-7Z" fill="#FF6B8B"/></g>
+<defs><radialGradient id="lg2"><stop offset="0" stop-color="#FFD66B" stop-opacity=".7"/><stop offset="1" stop-color="#FFD66B" stop-opacity="0"/></radialGradient></defs><circle cx="770" cy="66.2" r="30" fill="url(#lg2)"><animate attributeName="opacity" values="1;.55;1;.8;1" dur="4s" repeatCount="indefinite"/></circle><line x1="770" y1="126.2" x2="770" y2="72.2" stroke="#2B2B44" stroke-width="3.2" stroke-linecap="round"/><path d="M762,72.2 L778,72.2 L775,60.2 L765,60.2Z" fill="#2B2B44"/><rect x="766" y="62.2" width="8" height="8" rx="2" fill="#FFD66B"/><path d="M763,60.2 L770,53.2 L777,60.2Z" fill="#2B2B44"/>
+<g><g><animateTransform attributeName="transform" type="translate" values="0 0;0 -1.6;0 0" dur=".45s" repeatCount="indefinite"/>
+<g transform="translate(0,-31)" opacity=".7"><line x1="0" y1="0" x2="0" y2="12" stroke="#5B7FC0" stroke-width="4" stroke-linecap="round"/><circle cx="0" cy="13" r="2.2" fill="#F6DCC4"/><animateTransform attributeName="transform" type="rotate" additive="sum" values="-24;24;-24" dur=".9s" repeatCount="indefinite"/></g>
+<g transform="translate(-3,-14)"><line x1="0" y1="0" x2="0" y2="13" stroke="#5B7FC0" stroke-width="4.5" stroke-linecap="round"/><ellipse cx="2" cy="13.5" rx="3.6" ry="2" fill="#4A3A2C"/><animateTransform attributeName="transform" type="rotate" additive="sum" values="22;-22;22" dur=".9s" repeatCount="indefinite"/></g><g transform="translate(3,-14)"><line x1="0" y1="0" x2="0" y2="13" stroke="#5B7FC0" stroke-width="4.5" stroke-linecap="round"/><ellipse cx="2" cy="13.5" rx="3.6" ry="2" fill="#4A3A2C"/><animateTransform attributeName="transform" type="rotate" additive="sum" values="-22;22;-22" dur=".9s" repeatCount="indefinite"/></g>
+<path d="M-8,-14 C-9,-24 -6,-34 0,-35 C6,-34 9,-24 8,-14Z" fill="#5B7FC0"/>
+<g transform="translate(0,-31)" opacity="1"><line x1="0" y1="0" x2="0" y2="12" stroke="#5B7FC0" stroke-width="4" stroke-linecap="round"/><circle cx="0" cy="13" r="2.2" fill="#F6DCC4"/><animateTransform attributeName="transform" type="rotate" additive="sum" values="24;-24;24" dur=".9s" repeatCount="indefinite"/></g>
+<path stroke="#F4A261" stroke-width="4" stroke-linecap="round" fill="none" d="M-2,-34 C-12,-36 -20,-30 -30,-35">
+  <animate attributeName="d" dur="1.6s" repeatCount="indefinite" values="M-2,-34 C-12,-36 -20,-30 -30,-35;M-2,-34 C-12,-31 -21,-38 -31,-31;M-2,-34 C-12,-36 -20,-30 -30,-35"/></path>
+<path d="M-6,-35 h11" stroke="#F4A261" stroke-width="5" stroke-linecap="round"/>
+<circle cx="1" cy="-45" r="9.5" fill="#F6DCC4"/>
+<path d="M-9,-46 C-10,-57 9,-58 10,-48 C6,-51 1,-52 -2,-50 C-5,-52 -8,-50 -9,-46Z" fill="#4A3A2C"/>
+<path d="M-2,-53 l-2,-4 M2,-53 l2,-4" stroke="#4A3A2C" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="6" cy="-45" r="1.2" fill="#4A3A2C"/>
+<ellipse cx="6" cy="-41" rx="2.1" ry="1.2" fill="#FFA9C2" opacity=".6"/>
+</g><animateMotion dur="26s" repeatCount="indefinite" path="M-40,144.6 Q450,109 940,144.6"/></g>
+</svg>

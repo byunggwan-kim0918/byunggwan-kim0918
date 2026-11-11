@@ -7,6 +7,7 @@
   stack-{day,night}.svg      분야별 아이콘 칩
   project-<name>-{day,night}.svg
   activity-{day,night}.svg   최근 1년 기여 요약 (매일 갱신)
+  footer-{day,night}.svg     행성 지평선을 걸어가는 아이
 GitHub 라이트/다크 테마에 따라 day/night 가 자동으로 바뀝니다.
 
 아이콘: scripts/icons.json (Simple Icons, CC0). 기여 데이터: GITHUB_TOKEN 이 있으면 GraphQL, 없으면 공개 프로필.
@@ -145,17 +146,19 @@ def soft_cloud(x, y, s, t, drift=14, dur="16s"):
 </g></g>"""
 
 
-# ---------------------------------------------------------------- HEADER (동화풍: 작은 행성 위의 아이)
-STORY = "작은 행성 위에서, 오늘도 하나씩 만들어 갑니다."
+# ---------------------------------------------------------------- HEADER (동화풍, 가운데 타이틀 + 양쪽 작은 행성)
+TITLE = "Byunggwan Kim"
+TAGLINE = "Full-stack Developer  ·  Java & TypeScript"
+MOTTO = "building little things on a little planet"
 SCENE = {  # 장면 전용 색 (day = 해 질 녘 수채화, night = 깊은 밤)
     "day": dict(sky=["#F7E9D7", "#F3D5CF", "#D8D0F0"], planet="#E9C9A6", crater="#D2A57E",
                 grass="#8DB596", coat="#4A6FA5", scarf="#E76F51", skin="#F6DCC4", hair="#5B4636",
                 dome="#FFFFFF", rose="#D9466B", stem="#4F8A5B", lamp="#4A4A68", light="#FFC94D",
-                ink="#3B2F4A", muted="#7A6A7E", star="#B49BE0", moon="#F4B942"),
+                ink="#3B2F4A", muted="#7A6A7E", star="#B49BE0", moon="#F4B942", accent="#E76F51"),
     "night": dict(sky=["#141A3C", "#232B5C", "#4A3F78"], planet="#C9A37E", crater="#9A7552",
                   grass="#5E8C6A", coat="#5B7FC0", scarf="#F4A261", skin="#F6DCC4", hair="#4A3A2C",
                   dome="#FFFFFF", rose="#FF6B8B", stem="#6FAF7D", lamp="#2B2B44", light="#FFD66B",
-                  ink="#FBF6EE", muted="#C8C0DA", star="#FFF6D6", moon="#FFE19A"),
+                  ink="#FBF6EE", muted="#C8C0DA", star="#FFF6D6", moon="#FFE19A", accent="#F4A261"),
 }
 
 
@@ -163,69 +166,42 @@ def on_planet(x, px, py, pr):
     return py - math.sqrt(max(pr * pr - (x - px) ** 2, 0))
 
 
-def header(t):
-    H = 340
-    k = SCENE["night" if t["night"] else "day"]
-    px, py, pr = 230, 520, 230  # 행성 중심/반지름 (윗부분만 보임)
-    top = py - pr
-    p = [f"""<defs>
-<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{k['sky'][0]}"/><stop offset=".6" stop-color="{k['sky'][1]}"/><stop offset="1" stop-color="{k['sky'][2]}"/></linearGradient>
-<clipPath id="card"><rect width="{W}" height="{H}" rx="28"/></clipPath>
-<filter id="paper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/>
-<feColorMatrix values="0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0 0.4  0 0 0 .09 0"/></filter>
-<radialGradient id="lampglow"><stop offset="0" stop-color="{k['light']}" stop-opacity=".75"/><stop offset="1" stop-color="{k['light']}" stop-opacity="0"/></radialGradient>
-<radialGradient id="moonglow"><stop offset="0" stop-color="{k['moon']}" stop-opacity=".45"/><stop offset="1" stop-color="{k['moon']}" stop-opacity="0"/></radialGradient>
-<mask id="cres"><rect width="{W}" height="{H}" fill="#fff"/><circle cx="564" cy="56" r="30" fill="#000"/></mask>
-</defs>
-<rect width="{W}" height="{H}" rx="28" fill="url(#sky)"/>
-<g clip-path="url(#card)">"""]
-    # 별
-    pts = [(40, 36), (98, 120), (160, 50), (250, 92), (330, 34), (402, 140), (470, 60), (520, 170), (610, 120),
-           (680, 40), (740, 150), (800, 70), (860, 130), (880, 30), (300, 180), (60, 200), (430, 220), (700, 230),
-           (820, 250), (590, 250)]
-    for i, (x, y) in enumerate(pts):
-        p.append(dot_star(x, y, 1.3 if i % 3 else 2, k["star"], 2.2 + (i % 5) * .6, (i % 7) * .4))
-    p.append(sparkle(380, 90, 6, k["star"], 3) + sparkle(640, 196, 5, k["star"], 2.6, .9)
-             + sparkle(120, 170, 4.5, k["star"], 3.4, 1.6))
-    p.append(shooting_star(420, 40, 200, dict(t, star=k["star"]), "a", delay=2))
-    # 달 (얼굴 없이 은은하게)
-    p.append(f'<circle cx="548" cy="64" r="70" fill="url(#moonglow)"><animate attributeName="r" values="62;76;62" dur="6s" repeatCount="indefinite"/></circle>'
-             f'<circle cx="548" cy="64" r="30" fill="{k["moon"]}" mask="url(#cres)"/>')
-    # 멀리 떠 있는 고리 행성
-    p.append(f'<g transform="translate(160,96) rotate(-18)"><circle r="13" fill="{c("lilac", t)}" opacity=".85"/>'
-             f'<ellipse rx="24" ry="6" stroke="{c("gold", t)}" stroke-width="2" opacity=".8"/></g>')
-    # 작은 행성
-    p.append(f'<radialGradient id="pl" cx=".35" cy=".1" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".28"/>'
-             f'<stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></radialGradient>')
-    p.append(f'<circle cx="{px}" cy="{py}" r="{pr}" fill="{k["planet"]}"/><circle cx="{px}" cy="{py}" r="{pr}" fill="url(#pl)"/>'
-             f'<ellipse cx="{px-120}" cy="{top+44}" rx="16" ry="6" fill="{k["crater"]}"/>'
-             f'<ellipse cx="{px+70}" cy="{top+30}" rx="11" ry="4" fill="{k["crater"]}"/>'
-             f'<ellipse cx="{px+150}" cy="{top+70}" rx="14" ry="5" fill="{k["crater"]}"/>')
-    for gx in (px - 80, px - 40, px + 110, px + 180):  # 풀
-        gy = on_planet(gx, px, py, pr)
-        p.append(f'<path d="M{gx-5},{gy+2:.1f} q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="{k["grass"]}" stroke-width="2" stroke-linecap="round" fill="none"/>')
-    # 가로등 (깜빡이는 불빛)
-    lx = px + 140
-    ly = on_planet(lx, px, py, pr) + 4
-    p.append(f'<circle cx="{lx}" cy="{ly-63:.1f}" r="34" fill="url(#lampglow)"><animate attributeName="opacity" values="1;.55;1;.8;1" dur="4s" repeatCount="indefinite"/></circle>'
-             f'<line x1="{lx}" y1="{ly:.1f}" x2="{lx}" y2="{ly-56:.1f}" stroke="{k["lamp"]}" stroke-width="3.5" stroke-linecap="round"/>'
-             f'<path d="M{lx-9},{ly-56:.1f} L{lx+9},{ly-56:.1f} L{lx+6},{ly-70:.1f} L{lx-6},{ly-70:.1f}Z" fill="{k["lamp"]}"/>'
-             f'<rect x="{lx-5}" y="{ly-68:.1f}" width="10" height="10" rx="2" fill="{k["light"]}"/>'
-             f'<path d="M{lx-8},{ly-70:.1f} L{lx},{ly-78:.1f} L{lx+8},{ly-70:.1f}Z" fill="{k["lamp"]}"/>')
-    # 유리 덮개 속 장미
-    rx_ = px + 62
-    ry_ = on_planet(rx_, px, py, pr) + 3
-    p.append(f'<g transform="translate({rx_},{ry_:.1f})">'
-             f'<path d="M0,0 L0,-22" stroke="{k["stem"]}" stroke-width="2.2" stroke-linecap="round"/>'
-             f'<path d="M0,-10 q-8,-2 -9,-8 q7,0 9,6Z" fill="{k["stem"]}"/>'
-             f'<path d="M-6,-26 q6,-10 12,0 q-1,7 -6,7 q-5,0 -6,-7Z" fill="{k["rose"]}"/>'
-             f'<path d="M-3,-27 q3,-5 6,0" stroke="#fff" stroke-width="1" opacity=".5" fill="none"/>'
-             f'<path d="M-15,2 L-15,-26 A15,15 0 0 1 15,-26 L15,2Z" fill="{k["dome"]}" fill-opacity=".14" stroke="{k["dome"]}" stroke-opacity=".7" stroke-width="1.6"/>'
-             f'<path d="M-9,-30 A10,10 0 0 1 -2,-38" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>'
-             f'<rect x="-18" y="0" width="36" height="4" rx="2" fill="{k["lamp"]}" opacity=".5"/></g>')
-    # 무릎을 안고 앉아 달을 올려다보는 아이 (오리지널 캐릭터)
-    cx, cy = px - 34, on_planet(px - 34, px, py, pr) + 3
-    p.append(f"""<g transform="translate({cx:.1f},{cy:.1f}) scale(1.55)">
+def planet(px, py, pr, k, uid, craters=()):
+    s = [f'<radialGradient id="pl{uid}" cx=".35" cy=".1" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".28"/>'
+         f'<stop offset=".5" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".18"/></radialGradient>',
+         f'<circle cx="{px}" cy="{py}" r="{pr}" fill="{k["planet"]}"/><circle cx="{px}" cy="{py}" r="{pr}" fill="url(#pl{uid})"/>']
+    for dx, dy, w in craters:
+        s.append(f'<ellipse cx="{px+dx}" cy="{on_planet(px+dx, px, py, pr)+dy:.1f}" rx="{w}" ry="{w*0.36:.1f}" fill="{k["crater"]}"/>')
+    return "".join(s)
+
+
+def grass(x, y, k):
+    return f'<path d="M{x-5},{y+2:.1f} q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="{k["grass"]}" stroke-width="2" stroke-linecap="round" fill="none"/>'
+
+
+def lamp(lx, ly, k, uid):
+    return (f'<radialGradient id="lg{uid}"><stop offset="0" stop-color="{k["light"]}" stop-opacity=".75"/><stop offset="1" stop-color="{k["light"]}" stop-opacity="0"/></radialGradient>'
+            f'<circle cx="{lx}" cy="{ly-63:.1f}" r="34" fill="url(#lg{uid})"><animate attributeName="opacity" values="1;.55;1;.8;1" dur="4s" repeatCount="indefinite"/></circle>'
+            f'<line x1="{lx}" y1="{ly:.1f}" x2="{lx}" y2="{ly-56:.1f}" stroke="{k["lamp"]}" stroke-width="3.5" stroke-linecap="round"/>'
+            f'<path d="M{lx-9},{ly-56:.1f} L{lx+9},{ly-56:.1f} L{lx+6},{ly-70:.1f} L{lx-6},{ly-70:.1f}Z" fill="{k["lamp"]}"/>'
+            f'<rect x="{lx-5}" y="{ly-68:.1f}" width="10" height="10" rx="2" fill="{k["light"]}"/>'
+            f'<path d="M{lx-8},{ly-70:.1f} L{lx},{ly-78:.1f} L{lx+8},{ly-70:.1f}Z" fill="{k["lamp"]}"/>')
+
+
+def rose_dome(x, y, k):
+    return (f'<g transform="translate({x},{y:.1f})">'
+            f'<path d="M0,0 L0,-22" stroke="{k["stem"]}" stroke-width="2.2" stroke-linecap="round"/>'
+            f'<path d="M0,-10 q-8,-2 -9,-8 q7,0 9,6Z" fill="{k["stem"]}"/>'
+            f'<path d="M-6,-26 q6,-10 12,0 q-1,7 -6,7 q-5,0 -6,-7Z" fill="{k["rose"]}"/>'
+            f'<path d="M-3,-27 q3,-5 6,0" stroke="#fff" stroke-width="1" opacity=".5" fill="none"/>'
+            f'<path d="M-15,2 L-15,-26 A15,15 0 0 1 15,-26 L15,2Z" fill="{k["dome"]}" fill-opacity=".14" stroke="{k["dome"]}" stroke-opacity=".7" stroke-width="1.6"/>'
+            f'<path d="M-9,-30 A10,10 0 0 1 -2,-38" stroke="#fff" stroke-width="1.6" stroke-linecap="round" opacity=".8"/>'
+            f'<rect x="-18" y="0" width="36" height="4" rx="2" fill="{k["lamp"]}" opacity=".5"/></g>')
+
+
+def kid_sitting(cx, cy, k, t, s=1.55):
+    """무릎을 안고 앉아 오른쪽 위(달)를 올려다보는 아이 (오리지널 캐릭터)."""
+    return f"""<g transform="translate({cx:.1f},{cy:.1f}) scale({s})">
 <path stroke="{k['scarf']}" stroke-width="4.5" stroke-linecap="round" fill="none" d="M-6,-29 C-18,-31 -26,-24 -40,-30">
   <animate attributeName="d" dur="2.8s" repeatCount="indefinite" values="M-6,-29 C-18,-31 -26,-24 -40,-30;M-6,-29 C-18,-26 -28,-33 -41,-26;M-6,-29 C-18,-31 -26,-24 -40,-30"/></path>
 <path stroke="{k['scarf']}" stroke-width="3.5" stroke-linecap="round" fill="none" opacity=".85" d="M-6,-27 C-14,-25 -20,-20 -30,-22">
@@ -242,15 +218,132 @@ def header(t):
 <path d="M-3,-50 l-2,-5 M1,-50 l2,-5" stroke="{k['hair']}" stroke-width="2" stroke-linecap="round"/>
 <path d="M4,-41 q1.6,-1.6 3.2,0" stroke="{k['hair']}" stroke-width="1.3" stroke-linecap="round" fill="none"/>
 <ellipse cx="5.5" cy="-36.5" rx="2.4" ry="1.4" fill="{c('pink', t)}" opacity=".6"/>
-</g></g>""")
+</g></g>"""
+
+
+def header(t):
+    H = 320
+    k = SCENE["night" if t["night"] else "day"]
+    p = [f"""<defs>
+<linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{k['sky'][0]}"/><stop offset=".6" stop-color="{k['sky'][1]}"/><stop offset="1" stop-color="{k['sky'][2]}"/></linearGradient>
+<clipPath id="card"><rect width="{W}" height="{H}" rx="28"/></clipPath>
+<filter id="paper" x="0" y="0" width="100%" height="100%"><feTurbulence type="fractalNoise" baseFrequency=".85" numOctaves="2" seed="7"/>
+<feColorMatrix values="0 0 0 0 0.5  0 0 0 0 0.45  0 0 0 0 0.4  0 0 0 .09 0"/></filter>
+<radialGradient id="moonglow"><stop offset="0" stop-color="{k['moon']}" stop-opacity=".45"/><stop offset="1" stop-color="{k['moon']}" stop-opacity="0"/></radialGradient>
+<mask id="cres"><rect width="{W}" height="{H}" fill="#fff"/><circle cx="{812+13}" cy="{62-7}" r="24" fill="#000"/></mask>
+</defs>
+<rect width="{W}" height="{H}" rx="28" fill="url(#sky)"/>
+<g clip-path="url(#card)">"""]
+    # 별
+    pts = [(40, 36), (98, 120), (170, 30), (250, 92), (330, 34), (300, 230), (380, 70), (520, 64), (600, 30),
+           (660, 110), (720, 40), (880, 140), (860, 30), (60, 200), (430, 250), (470, 30), (600, 240), (240, 160),
+           (690, 180), (560, 120), (350, 120)]
+    for i, (x, y) in enumerate(pts):
+        p.append(dot_star(x, y, 1.3 if i % 3 else 2, k["star"], 2.2 + (i % 5) * .6, (i % 7) * .4))
+    p.append(sparkle(300, 76, 6, k["star"], 3) + sparkle(640, 70, 5, k["star"], 2.6, .9)
+             + sparkle(200, 130, 4, k["star"], 3.4, 1.6) + sparkle(700, 140, 4, k["star"], 3, 2.1))
+    p.append(shooting_star(560, 24, 180, dict(t, star=k["star"]), "a", delay=2))
+    # 달 (오른쪽 위)
+    p.append(f'<circle cx="812" cy="62" r="56" fill="url(#moonglow)"><animate attributeName="r" values="50;62;50" dur="6s" repeatCount="indefinite"/></circle>'
+             f'<circle cx="812" cy="62" r="24" fill="{k["moon"]}" mask="url(#cres)"/>')
+    # 고리 행성 (왼쪽 위)
+    p.append(f'<g transform="translate(92,68) rotate(-18)"><circle r="12" fill="{c("lilac", t)}" opacity=".85"/>'
+             f'<ellipse rx="22" ry="5.5" stroke="{c("gold", t)}" stroke-width="2" opacity=".8"/></g>')
+    # 왼쪽 행성 + 앉은 아이
+    lpx, lpy, lpr = 140, 430, 175
+    p.append(planet(lpx, lpy, lpr, k, "L", craters=[(-70, 26, 13), (52, 18, 9)]))
+    for gx in (60, 100, 205, 240):
+        p.append(grass(gx, on_planet(gx, lpx, lpy, lpr), k))
+    p.append(kid_sitting(lpx - 8, on_planet(lpx - 8, lpx, lpy, lpr) + 3, k, t))
+    # 오른쪽 행성 + 가로등 + 장미
+    rpx, rpy, rpr = 770, 440, 170
+    p.append(planet(rpx, rpy, rpr, k, "R", craters=[(-60, 22, 11), (70, 30, 14)]))
+    for gx in (680, 720, 830, 870):
+        p.append(grass(gx, on_planet(gx, rpx, rpy, rpr), k))
+    p.append(lamp(810, on_planet(810, rpx, rpy, rpr) + 4, k, "R"))
+    p.append(rose_dome(740, on_planet(740, rpx, rpy, rpr) + 3, k))
     # 종이 질감
     p.append(f'<rect width="{W}" height="{H}" filter="url(#paper)"/>')
-    # 글
-    tx = 690
-    p.append(f'<text class="r" x="{tx}" y="250" font-size="44" font-weight="800" letter-spacing="2" fill="{k["ink"]}" text-anchor="middle">{NAME_KO}</text>')
-    p.append(f'<text class="r" x="{tx}" y="280" font-size="16" font-style="italic" fill="{k["muted"]}" text-anchor="middle">{SUBTITLE}</text>')
-    p.append(f'<text class="r" x="{tx}" y="312" font-size="14" fill="{k["muted"]}" text-anchor="middle">{STORY}</text>')
+    # 가운데 타이틀
+    cx = W / 2
+    p.append(f'<text class="r" x="{cx}" y="150" font-size="50" font-style="italic" font-weight="700" letter-spacing=".5" '
+             f'fill="{k["ink"]}" text-anchor="middle">{TITLE}</text>')
+    p.append(sparkle(cx - 212, 184, 5, k["accent"]) + sparkle(cx + 212, 184, 5, k["accent"]))
+    p.append(f'<text class="r" x="{cx}" y="190" font-size="16" letter-spacing="1.5" fill="{k["muted"]}" text-anchor="middle">{escape(TAGLINE)}</text>')
+    p.append(f'<text class="m" x="{cx}" y="222" font-size="11.5" letter-spacing="3" fill="{k["muted"]}" text-anchor="middle" opacity=".85">— {MOTTO.upper()} —</text>')
     p.append("</g>")
+    return svg(W, H, "\n".join(p))
+
+
+# ---------------------------------------------------------------- FOOTER (지평선을 걸어가는 아이)
+def walker(k, t):
+    """오른쪽을 보고 걷는 아이. 원점 = 발 밑."""
+    leg = lambda dx, phase: (
+        f'<g transform="translate({dx},-14)"><line x1="0" y1="0" x2="0" y2="13" stroke="{k["coat"]}" stroke-width="4.5" stroke-linecap="round"/>'
+        f'<ellipse cx="2" cy="13.5" rx="3.6" ry="2" fill="{k["hair"]}"/>'
+        f'<animateTransform attributeName="transform" type="rotate" additive="sum" values="{phase};{-phase};{phase}" dur=".9s" repeatCount="indefinite"/></g>')
+    arm = lambda phase, op: (
+        f'<g transform="translate(0,-31)" opacity="{op}"><line x1="0" y1="0" x2="0" y2="12" stroke="{k["coat"]}" stroke-width="4" stroke-linecap="round"/>'
+        f'<circle cx="0" cy="13" r="2.2" fill="{k["skin"]}"/>'
+        f'<animateTransform attributeName="transform" type="rotate" additive="sum" values="{phase};{-phase};{phase}" dur=".9s" repeatCount="indefinite"/></g>')
+    return f"""<g><animateTransform attributeName="transform" type="translate" values="0 0;0 -1.6;0 0" dur=".45s" repeatCount="indefinite"/>
+{arm(-24, ".7")}
+{leg(-3, 22)}{leg(3, -22)}
+<path d="M-8,-14 C-9,-24 -6,-34 0,-35 C6,-34 9,-24 8,-14Z" fill="{k['coat']}"/>
+{arm(24, "1")}
+<path stroke="{k['scarf']}" stroke-width="4" stroke-linecap="round" fill="none" d="M-2,-34 C-12,-36 -20,-30 -30,-35">
+  <animate attributeName="d" dur="1.6s" repeatCount="indefinite" values="M-2,-34 C-12,-36 -20,-30 -30,-35;M-2,-34 C-12,-31 -21,-38 -31,-31;M-2,-34 C-12,-36 -20,-30 -30,-35"/></path>
+<path d="M-6,-35 h11" stroke="{k['scarf']}" stroke-width="5" stroke-linecap="round"/>
+<circle cx="1" cy="-45" r="9.5" fill="{k['skin']}"/>
+<path d="M-9,-46 C-10,-57 9,-58 10,-48 C6,-51 1,-52 -2,-50 C-5,-52 -8,-50 -9,-46Z" fill="{k['hair']}"/>
+<path d="M-2,-53 l-2,-4 M2,-53 l2,-4" stroke="{k['hair']}" stroke-width="1.8" stroke-linecap="round"/>
+<circle cx="6" cy="-45" r="1.2" fill="{k['hair']}"/>
+<ellipse cx="6" cy="-41" rx="2.1" ry="1.2" fill="{c('pink', t)}" opacity=".6"/>
+</g>"""
+
+
+def footer(t):
+    H = 170
+    k = SCENE["night" if t["night"] else "day"]
+    ground = "M0,138 Q450,108 900,138"
+    p = []
+    # 별
+    for i, (x, y) in enumerate([(60, 30), (150, 70), (260, 24), (370, 58), (500, 20), (590, 64), (700, 30), (820, 56),
+                                 (870, 18), (420, 90), (120, 100), (760, 96)]):
+        p.append(dot_star(x, y, 1.3 if i % 3 else 2, k["star"], 2.2 + (i % 5) * .6, (i % 7) * .4))
+    p.append(sparkle(310, 40, 5, k["star"], 3) + sparkle(640, 46, 4, k["star"], 2.6, 1))
+    p.append(shooting_star(560, 20, 150, dict(t, star=k["star"]), "f", delay=3))
+    # 지평선 (행성 표면)
+    p.append(f'<defs><linearGradient id="gr" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="{k["planet"]}"/>'
+             f'<stop offset="1" stop-color="{k["crater"]}"/></linearGradient></defs>')
+    p.append(f'<path d="{ground} L900,{H} L0,{H}Z" fill="url(#gr)"/>')
+    for x, w in [(120, 14), (330, 10), (600, 16), (790, 11)]:
+        y = 138 - 30 * (1 - ((x - 450) / 450) ** 2) + 12
+        p.append(f'<ellipse cx="{x}" cy="{y:.1f}" rx="{w}" ry="{w*0.35:.1f}" fill="{k["crater"]}" opacity=".8"/>')
+
+    def surf(x):  # 지평선 곡선 위 y
+        return 138 - 30 * (1 - ((x - 450) / 450) ** 2)
+
+    for gx in (70, 190, 260, 410, 520, 650, 720, 860):
+        gy = surf(gx)
+        p.append(f'<path d="M{gx-5},{gy+2:.1f} q2,-9 4,-1 q1,-11 3,0 q3,-8 4,1" stroke="{k["grass"]}" stroke-width="2" stroke-linecap="round" fill="none"/>')
+    # 장미 (작게)
+    rx_ = 560
+    p.append(f'<g transform="translate({rx_},{surf(rx_)+2:.1f}) scale(.8)">'
+             f'<path d="M0,0 L0,-20" stroke="{k["stem"]}" stroke-width="2.2" stroke-linecap="round"/>'
+             f'<path d="M0,-9 q-8,-2 -9,-8 q7,0 9,6Z" fill="{k["stem"]}"/>'
+             f'<path d="M-6,-24 q6,-10 12,0 q-1,7 -6,7 q-5,0 -6,-7Z" fill="{k["rose"]}"/></g>')
+    # 가로등
+    lx = 770
+    ly = surf(lx) + 3
+    p.append(f'<defs><radialGradient id="lg2"><stop offset="0" stop-color="{k["light"]}" stop-opacity=".7"/><stop offset="1" stop-color="{k["light"]}" stop-opacity="0"/></radialGradient></defs>'
+             f'<circle cx="{lx}" cy="{ly-60:.1f}" r="30" fill="url(#lg2)"><animate attributeName="opacity" values="1;.55;1;.8;1" dur="4s" repeatCount="indefinite"/></circle>'
+             f'<line x1="{lx}" y1="{ly:.1f}" x2="{lx}" y2="{ly-54:.1f}" stroke="{k["lamp"]}" stroke-width="3.2" stroke-linecap="round"/>'
+             f'<path d="M{lx-8},{ly-54:.1f} L{lx+8},{ly-54:.1f} L{lx+5},{ly-66:.1f} L{lx-5},{ly-66:.1f}Z" fill="{k["lamp"]}"/>'
+             f'<rect x="{lx-4}" y="{ly-64:.1f}" width="8" height="8" rx="2" fill="{k["light"]}"/>'
+             f'<path d="M{lx-7},{ly-66:.1f} L{lx},{ly-73:.1f} L{lx+7},{ly-66:.1f}Z" fill="{k["lamp"]}"/>')
+    # 걷는 아이: 지평선 곡선을 따라 왼쪽 → 오른쪽
+    p.append(f'<g>{walker(k, t)}<animateMotion dur="26s" repeatCount="indefinite" path="M-40,{surf(-40)+1:.1f} Q450,{108+1} 940,{surf(940)+1:.1f}"/></g>')
     return svg(W, H, "\n".join(p))
 
 
@@ -419,6 +512,7 @@ def main():
     for mode, t in THEMES.items():
         (OUT / f"header-{mode}.svg").write_text(header(t), encoding="utf-8")
         (OUT / f"stack-{mode}.svg").write_text(stack(t), encoding="utf-8")
+        (OUT / f"footer-{mode}.svg").write_text(footer(t), encoding="utf-8")
         (OUT / f"activity-{mode}.svg").write_text(activity(t, days), encoding="utf-8")
         for name, desc, tech, art, ck in PROJECTS:
             (OUT / f"project-{name}-{mode}.svg").write_text(project(name, desc, tech, art, ck, t), encoding="utf-8")

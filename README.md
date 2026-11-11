@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/header-night.svg">
-    <img src="assets/header-day.svg" width="900" alt="김병관 · Byunggwan Kim — Full-stack Developer">
+    <img src="assets/header-day.svg" width="900" alt="Byunggwan Kim — Full-stack Developer">
   </picture>
 </div>
 
@@ -25,5 +25,12 @@
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/activity-night.svg">
     <img src="assets/activity-day.svg" width="900" alt="최근 1년 GitHub 활동">
+  </picture>
+</div>
+
+<div align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/footer-night.svg">
+    <img src="assets/footer-day.svg" width="900" alt="행성 지평선을 걸어가는 아이">
   </picture>
 </div>
