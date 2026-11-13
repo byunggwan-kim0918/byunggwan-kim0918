@@ -46,6 +46,7 @@ STACK = [
 PROJECTS = [  # (repo name, 설명, 기술, 그림, 색)
     ("shg-trip", "LLM과 벡터 검색으로 여행 일정을 만드는 서비스", "Spring Boot · pgvector · Claude API · AWS",
      "constellation", "gold"),
+    ("ui-tells", "UI 디자인 리뷰 도구", "Shell", "telescope", "lilac"),
 ]
 
 # ---------------------------------------------------------------- PALETTE
@@ -511,7 +512,8 @@ def activity(t, days):
 def main():
     days = fetch_contributions(USERNAME)
     OUT.mkdir(exist_ok=True)
-    # assets에는 더 생성하지 않는 svg(project-ui-tells-*)도 있어 비우지 않는다.
+    for f in OUT.glob("*.svg"):
+        f.unlink()
     for mode, t in THEMES.items():
         (OUT / f"header-{mode}.svg").write_text(header(t), encoding="utf-8")
         (OUT / f"stack-{mode}.svg").write_text(stack(t), encoding="utf-8")

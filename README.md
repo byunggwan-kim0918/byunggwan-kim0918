@@ -16,6 +16,7 @@
 
 <div align="center">
   <a href="https://github.com/byunggwan-kim0918/shg-trip-back"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-shg-trip-night.svg"><img src="assets/project-shg-trip-day.svg" width="49%" alt="shg-trip — LLM과 벡터 검색으로 여행 일정을 만드는 서비스"></picture></a>
+  <a href="https://github.com/byunggwan-kim0918/ui-tells"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/project-ui-tells-night.svg"><img src="assets/project-ui-tells-day.svg" width="49%" alt="ui-tells — UI 디자인 리뷰 도구"></picture></a>
 </div>
 
 <br>
