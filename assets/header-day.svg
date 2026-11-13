@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="320" viewBox="0 0 900 320" fill="none">
-<style>.s{font-family:'Pretendard','Inter','Segoe UI','Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif}.m{font-family:'JetBrains Mono','SF Mono','Cascadia Code',Consolas,Menlo,monospace}.r{font-family:'Gowun Batang','Nanum Myeongjo','AppleMyungjo','Batang',Georgia,serif}</style>
+<style>.s{font-family:'Pretendard','Inter','Segoe UI','Apple SD Gothic Neo','Noto Sans KR',Arial,system-ui,sans-serif}.m{font-family:'JetBrains Mono','SF Mono','Cascadia Code',Consolas,Menlo,monospace}.r{font-family:'Gowun Batang','Nanum Myeongjo','AppleMyungjo','Batang',Georgia,serif}</style>
 <defs>
 <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#F7E9D7"/><stop offset=".6" stop-color="#F3D5CF"/><stop offset="1" stop-color="#D8D0F0"/></linearGradient>
 <clipPath id="card"><rect width="900" height="320" rx="28"/></clipPath>

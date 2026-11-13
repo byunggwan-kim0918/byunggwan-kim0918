@@ -32,25 +32,26 @@ SUBTITLE = "Byunggwan Kim · Backend Developer"
 
 # (label, color key, [(name, simple-icons slug or None)])
 STACK = [
-    ("BACKEND", "gold", [("Java 21", "openjdk"), ("Spring Boot", "springboot"), ("JPA", "hibernate"),
-                         ("Spring Security", "springsecurity"), ("Flyway", "flyway")]),
-    ("FRONTEND", "lilac", [("TypeScript", "typescript"), ("Next.js", "nextdotjs"), ("React", "react"),
-                           ("Tailwind CSS", "tailwindcss"), ("Zustand", None)]),
-    ("DATA", "sky", [("PostgreSQL", "postgresql"), ("Redis", "redis"), ("MapLibre", "maplibre")]),
-    ("INFRA", "pink", [("Docker", "docker"), ("AWS", "amazonwebservices"), ("Terraform", "terraform"),
-                       ("GitHub Actions", "githubactions")]),
-    ("TEST", "mint", [("Playwright", None), ("JaCoCo", None)]),
+    ("BACKEND", "gold", [("Java 21", "openjdk"), ("Spring Boot", "springboot"), ("Spring Batch", "spring"),
+                         ("MyBatis", None), ("JPA", "hibernate")]),
+    ("DATA", "sky", [("Aurora MySQL", "mysql"), ("MariaDB", "mariadb"), ("PostgreSQL(pgvector)", "postgresql"),
+                     ("Valkey(Redis)", None)]),
+    ("AI", "leaf", [("Claude API", "claude"), ("Vertex AI", "googlecloud")]),
+    ("INFRA", "pink", [("AWS", "amazonwebservices"), ("Docker", "docker"), ("Terraform", "terraform"),
+                       ("GitHub Actions", "githubactions"), ("Jenkins", "jenkins"), ("Kafka", "apachekafka")]),
+    ("TEST", "mint", [("JUnit", "junit5"), ("Karate", None), ("k6", "k6")]),
+    ("FRONTEND", "lilac", [("TypeScript", "typescript"), ("React", "react"), ("Next.js", "nextdotjs")]),
 ]
 
 PROJECTS = [  # (repo name, 설명, 기술, 그림, 색)
-    ("shg-trip", "여행 일정 관리 서비스", "Spring Boot · Next.js · AWS", "constellation", "gold"),
-    ("ui-tells", "UI 디자인 리뷰 도구", "Shell", "telescope", "lilac"),
+    ("shg-trip", "LLM과 벡터 검색으로 여행 일정을 만드는 서비스", "Spring Boot · pgvector · Claude API · AWS",
+     "constellation", "gold"),
 ]
 
 # ---------------------------------------------------------------- PALETTE
 COLORS = {  # (day, night)
     "gold": ("#C98A0B", "#FFD66B"), "lilac": ("#7B61E0", "#B9A8FF"), "sky": ("#3D8FD9", "#8CCBFF"),
-    "pink": ("#D9577F", "#FFA9C2"), "mint": ("#1F9C80", "#8FE3CF"),
+    "pink": ("#D9577F", "#FFA9C2"), "mint": ("#1F9C80", "#8FE3CF"), "leaf": ("#5A9A2A", "#BCE58E"),
 }
 THEMES = {
     # 라이트: 연보라~복숭아 새벽하늘
@@ -64,7 +65,8 @@ THEMES = {
                   cloud="#3A3470", cloud_op=".45",
                   levels=["#1B1E3A", "#3A3474", "#5B4FB0", "#8F7FF0", "#FFD66B"]),
 }
-SANS = "'Pretendard','Inter','Segoe UI','Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif"
+# 칩 폭은 text_w 추정이라, Arial이 없으면 리눅스가 DejaVu Sans 같은 넓은 글꼴로 떨어져 글자가 칩 밖으로 나간다.
+SANS = "'Pretendard','Inter','Segoe UI','Apple SD Gothic Neo','Noto Sans KR',Arial,system-ui,sans-serif"
 SERIF = "'Gowun Batang','Nanum Myeongjo','AppleMyungjo','Batang',Georgia,serif"
 MONO = "'JetBrains Mono','SF Mono','Cascadia Code',Consolas,Menlo,monospace"
 W = 900
@@ -360,7 +362,7 @@ def icon(slug, x, y, size, color):
 
 
 def label_glyph(i, x, y, col, t):
-    """분야 라벨 앞 아이콘: 달 / 별 / 행성 / 혜성 / 반짝이."""
+    """분야 라벨 앞 아이콘: 달 / 별 / 행성 / 혜성 / 반짝이 / 점별 무리."""
     cx, cy = x + 10, y + 11
     bg = t["chip_bg"] if t["night"] else "#FFFFFF"
     g = [
@@ -369,6 +371,8 @@ def label_glyph(i, x, y, col, t):
         f'<circle cx="{cx}" cy="{cy}" r="6.5" fill="{col}"/><ellipse cx="{cx}" cy="{cy}" rx="11" ry="3.5" stroke="{col}" stroke-width="1.8" transform="rotate(-20 {cx} {cy})"/>',
         f'<path d="M{cx-11},{cy-7} L{cx+2},{cy+1}" stroke="{col}" stroke-width="2" stroke-linecap="round" opacity=".6"/><path d="M{cx-8},{cy-11} L{cx+1},{cy-3}" stroke="{col}" stroke-width="1.5" stroke-linecap="round" opacity=".4"/><circle cx="{cx+4}" cy="{cy+3}" r="5.5" fill="{col}"/>',
         sparkle(cx - 3, cy + 2, 7, col) + sparkle(cx + 6, cy - 5, 4, col),
+        f'<path d="M{cx-7},{cy+5} L{cx},{cy-3} L{cx+7},{cy+3}" stroke="{col}" stroke-width="1.4" stroke-linecap="round" opacity=".5"/>'
+        f'<circle cx="{cx-7}" cy="{cy+5}" r="3.4" fill="{col}"/><circle cx="{cx}" cy="{cy-3}" r="2.4" fill="{col}"/><circle cx="{cx+7}" cy="{cy+3}" r="2.9" fill="{col}"/>',
     ]
     return g[i % len(g)]
 
@@ -412,7 +416,7 @@ def project(name, desc, tech, art, ck, t):
     PW, PH = 440, 170
     col = c(ck, t)
     if art == "constellation":
-        deco = constellation([(318, 120), (346, 82), (384, 98), (404, 54), (366, 38)],
+        deco = constellation([(318, 94), (346, 56), (384, 72), (404, 28), (366, 12)],
                              [(0, 1), (1, 2), (2, 3), (3, 4)], dict(t, star=col), r=3.4, line_op=".7")
     else:
         deco = telescope(372, 104, t)
@@ -507,8 +511,7 @@ def activity(t, days):
 def main():
     days = fetch_contributions(USERNAME)
     OUT.mkdir(exist_ok=True)
-    for f in OUT.glob("*.svg"):
-        f.unlink()
+    # assets에는 더 생성하지 않는 svg(project-ui-tells-*)도 있어 비우지 않는다.
     for mode, t in THEMES.items():
         (OUT / f"header-{mode}.svg").write_text(header(t), encoding="utf-8")
         (OUT / f"stack-{mode}.svg").write_text(stack(t), encoding="utf-8")

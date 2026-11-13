@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="900" height="310.41509433962267" viewBox="0 0 900 310.41509433962267" fill="none">
-<style>.s{font-family:'Pretendard','Inter','Segoe UI','Apple SD Gothic Neo','Noto Sans KR',system-ui,sans-serif}.m{font-family:'JetBrains Mono','SF Mono','Cascadia Code',Consolas,Menlo,monospace}.r{font-family:'Gowun Batang','Nanum Myeongjo','AppleMyungjo','Batang',Georgia,serif}</style>
+<style>.s{font-family:'Pretendard','Inter','Segoe UI','Apple SD Gothic Neo','Noto Sans KR',Arial,system-ui,sans-serif}.m{font-family:'JetBrains Mono','SF Mono','Cascadia Code',Consolas,Menlo,monospace}.r{font-family:'Gowun Batang','Nanum Myeongjo','AppleMyungjo','Batang',Georgia,serif}</style>
 <rect x="1.5" y="1.5" width="897" height="307" rx="24" fill="#11132A" stroke="#2A2D52" stroke-width="2"/>
-<text class="s" x="150.0" y="74" font-size="40" font-weight="800" fill="#B9A8FF" text-anchor="middle">635</text>
+<text class="s" x="150.0" y="74" font-size="40" font-weight="800" fill="#B9A8FF" text-anchor="middle">663</text>
 <text class="m" x="150.0" y="100" font-size="13" letter-spacing="1" fill="#A7A3C7" text-anchor="middle">contributions</text>
 <text class="s" x="450.0" y="74" font-size="40" font-weight="800" fill="#FFD66B" text-anchor="middle">6</text>
 <text class="m" x="450.0" y="100" font-size="13" letter-spacing="1" fill="#A7A3C7" text-anchor="middle">day streak</text>
@@ -389,7 +389,7 @@
 <rect x="852.2" y="181.5" width="12.8" height="12.8" rx="3" fill="#5B4FB0"/>
 <rect x="852.2" y="197.3" width="12.8" height="12.8" rx="3" fill="#8F7FF0"/>
 <rect x="852.2" y="213.1" width="12.8" height="12.8" rx="3" fill="#5B4FB0"/>
-<rect x="852.2" y="228.9" width="12.8" height="12.8" rx="3" fill="#3A3474"/>
+<rect x="852.2" y="228.9" width="12.8" height="12.8" rx="3" fill="#8F7FF0"/>
 <text class="m" x="32" y="288" font-size="12" fill="#A7A3C7">last 12 months · updated 2026-11-13</text>
 <text class="m" x="751" y="288" font-size="12" fill="#A7A3C7" text-anchor="end">less</text>
 <rect x="759" y="278" width="11" height="11" rx="2.5" fill="#1B1E3A"/>
