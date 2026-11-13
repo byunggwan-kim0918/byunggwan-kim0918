@@ -1,7 +1,7 @@
 <div align="center">
   <picture>
     <source media="(prefers-color-scheme: dark)" srcset="assets/header-night.svg">
-    <img src="assets/header-day.svg" width="900" alt="Byunggwan Kim — Full-stack Developer">
+    <img src="assets/header-day.svg" width="900" alt="Byunggwan Kim — Backend Developer">
   </picture>
 </div>
 

@@ -72,7 +72,7 @@
 <rect width="900" height="320" filter="url(#paper)"/>
 <text class="r" x="450.0" y="140" font-size="36" font-style="italic" font-weight="700" letter-spacing=".5" fill="#3B2F4A" text-anchor="middle">Byunggwan Kim</text>
 <path d="M264.0,166 Q265.12,168.88 268.0,170 Q265.12,171.12 264.0,174 Q262.88,171.12 260.0,170 Q262.88,168.88 264.0,166Z" fill="#E76F51"></path><path d="M636.0,166 Q637.12,168.88 640.0,170 Q637.12,171.12 636.0,174 Q634.88,171.12 632.0,170 Q634.88,168.88 636.0,166Z" fill="#E76F51"></path>
-<text class="r" x="450.0" y="175" font-size="13.5" letter-spacing="1.2" fill="#7A6A7E" text-anchor="middle">Full-stack Developer  ·  Spring Boot &amp; Next.js</text>
+<text class="r" x="450.0" y="175" font-size="13.5" letter-spacing="1.2" fill="#7A6A7E" text-anchor="middle">Backend Developer  ·  Spring Boot &amp; AWS</text>
 <text class="m" x="450.0" y="202" font-size="10" letter-spacing="2.6" fill="#7A6A7E" text-anchor="middle" opacity=".85">— BUILDING LITTLE THINGS ON A LITTLE PLANET —</text>
 </g>
 </svg>
