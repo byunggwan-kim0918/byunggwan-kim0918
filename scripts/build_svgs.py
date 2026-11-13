@@ -28,7 +28,7 @@ USERNAME = os.environ.get("GH_USERNAME") or "byunggwan-kim0918"
 
 # ---------------------------------------------------------------- DATA
 NAME_KO = "김병관"
-SUBTITLE = "Byunggwan Kim · Full-stack Developer"
+SUBTITLE = "Byunggwan Kim · Backend Developer"
 
 # (label, color key, [(name, simple-icons slug or None)])
 STACK = [
@@ -148,7 +148,7 @@ def soft_cloud(x, y, s, t, drift=14, dur="16s"):
 
 # ---------------------------------------------------------------- HEADER (동화풍, 가운데 타이틀 + 양쪽 작은 행성)
 TITLE = "Byunggwan Kim"
-TAGLINE = "Full-stack Developer  ·  Spring Boot & Next.js"
+TAGLINE = "Backend Developer  ·  Spring Boot & AWS"
 MOTTO = "building little things on a little planet"
 SCENE = {  # 장면 전용 색 (day = 해 질 녘 수채화, night = 깊은 밤)
     "day": dict(sky=["#F7E9D7", "#F3D5CF", "#D8D0F0"], planet="#E9C9A6", crater="#D2A57E",
